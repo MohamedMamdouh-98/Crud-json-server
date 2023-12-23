@@ -1,7 +1,6 @@
 import React from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-
 const AppBar = () => {
   return (
     <Navbar  bg="dark" data-bs-theme="dark">

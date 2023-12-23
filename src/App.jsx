@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import Products from "./pages/Products";
 import Category from "./pages/Categorys";
 import Home from "./pages/Home";
+import './index.css'
 
 const App = () => {
   useEffect(() => {
