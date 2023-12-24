@@ -20,6 +20,7 @@ const Products = () => {
     Swal.fire({
       title: `Do you want to clear this ${prduct.title}?`,
       showCancelButton: true,
+      icon: "question"
     }).then((data) => {
       if (data?.isConfirmed) {
         fetch(`http://localhost:5000/products/${prduct.id}`, {
@@ -28,6 +29,11 @@ const Products = () => {
           .then((res) => res.json())
           .then((data) => {
             getAllProducts();
+            Swal.fire({
+              title: "Deleted",
+              text: "You clicked the button!",
+              icon: "success"
+            });
           });
       }
     });
