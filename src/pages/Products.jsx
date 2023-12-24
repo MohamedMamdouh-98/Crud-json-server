@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 const Products = () => {
   const [products, setProducts] = useState();
 
@@ -16,15 +16,21 @@ const Products = () => {
     getAllProducts();
   }, []);
 
-  const deleteProduct = (prductId) => {
-    Swal.fire()
-    fetch(`http://localhost:5000/products/${prductId}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        getAllProducts();
-      });
+  const deleteProduct = (prduct) => {
+    Swal.fire({
+      title: `Do you want to clear this ${prduct.title}?`,
+      showCancelButton: true,
+    }).then((data) => {
+      if (data?.isConfirmed) {
+        fetch(`http://localhost:5000/products/${prduct.id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            getAllProducts();
+          });
+      }
+    });
   };
 
   return (
@@ -61,7 +67,7 @@ const Products = () => {
                 </Button>
               </td>
               <td>
-                <Button variant="danger" onClick={() => deleteProduct(el.id)}>
+                <Button variant="danger" onClick={() => deleteProduct(el)}>
                   delete
                 </Button>
               </td>
