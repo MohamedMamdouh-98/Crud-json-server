@@ -1,12 +1,28 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Products = () => {
+  const [products, setProducts] = useState();
+
+  const getAllProducts = ()=> {
+    fetch("http://localhost:5000/products")
+    .then((res) => res.json())
+    .then((data) => {
+      setProducts(data);
+    });
+  }
+  useEffect(() => {
+    getAllProducts()
+  }, []);
+
   return (
     <div className="mt-3">
-    <h2>products</h2>
-    <Button as={Link} to='products/add' variant="success">add product</Button>
+      <h2>products</h2>
+      <Button as={Link} to="products/add" variant="success">
+        add product
+      </Button>
       <table className="table table-striped mt-2">
         <thead>
           <tr>
@@ -20,21 +36,23 @@ const Products = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>mohamed</td>
-            <td>mohamed@gmail.com</td>
-            <td>01064316545</td>
-            <td>
-              <Button variant='warning'>edit</Button>
-            </td>
-            <td>
-              <Button variant='primary'>view</Button>
-            </td>
-            <td>
-              <Button variant="danger">delete</Button>
-            </td>
-          </tr>
+          {products?.map((el) => (
+            <tr key={el.id}>
+              <th scope="row">{el.id}</th>
+              <td>{el.title.slice(0, 15)}...</td>
+              <td>{el.price}</td>
+              <td>{el.category}</td>
+              <td>
+                <Button variant="warning">edit</Button>
+              </td>
+              <td>
+                <Button as={Link} to={`/products/${el.id}`} variant="primary">view</Button>
+              </td>
+              <td>
+                <Button variant="danger">delete</Button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

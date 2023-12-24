@@ -8,13 +8,14 @@ import Products from "./pages/Products";
 import Category from "./pages/Categorys";
 import Home from "./pages/Home";
 import './index.css'
+import ProductDetails from "./pages/ProductDetails";
 
 const App = () => {
-  useEffect(() => {
-    axios.get("http://localhost:4000/products").then((res) => {
-      res.json();
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("http://localhost:4000/products").then((res) => {
+  //     res.json();
+  //   });
+  // }, []);
   return (
     <>
       <AppBar />
@@ -27,6 +28,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/products" element={<Products />} />
+                <Route path="/products/:productId" element={<ProductDetails />} />
                 <Route path="/categorys" element={<Category />} />
               </Routes>
           </Col>
