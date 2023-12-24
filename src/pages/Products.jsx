@@ -1,21 +1,31 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import Swal from 'sweetalert2'
 const Products = () => {
   const [products, setProducts] = useState();
 
-  const getAllProducts = ()=> {
+  const getAllProducts = () => {
     fetch("http://localhost:5000/products")
-    .then((res) => res.json())
-    .then((data) => {
-      setProducts(data);
-    });
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+      });
+  };
   useEffect(() => {
-    getAllProducts()
+    getAllProducts();
   }, []);
+
+  const deleteProduct = (prductId) => {
+    Swal.fire()
+    fetch(`http://localhost:5000/products/${prductId}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        getAllProducts();
+      });
+  };
 
   return (
     <div className="mt-3">
@@ -46,10 +56,14 @@ const Products = () => {
                 <Button variant="warning">edit</Button>
               </td>
               <td>
-                <Button as={Link} to={`/products/${el.id}`} variant="primary">view</Button>
+                <Button as={Link} to={`/products/${el.id}`} variant="primary">
+                  view
+                </Button>
               </td>
               <td>
-                <Button variant="danger">delete</Button>
+                <Button variant="danger" onClick={() => deleteProduct(el.id)}>
+                  delete
+                </Button>
               </td>
             </tr>
           ))}
