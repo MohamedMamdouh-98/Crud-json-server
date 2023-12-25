@@ -30,7 +30,7 @@ const navigate = useNavigate()
   };
   return (
     <Form className="mt-3" onSubmit={handleSubmit}>
-      <h2>{product.id}</h2>
+      <h2 className="my-3">ID : {product.id}</h2>
       <Form.Group className="mb-3" controlId="title">
         <Form.Label>
           Title <span className="text-danger">*</span>
