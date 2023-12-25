@@ -42,7 +42,7 @@ const Products = () => {
   return (
     <div className="mt-3">
       <h2>products</h2>
-      <Button as={Link} to="products/add" variant="success">
+      <Button as={Link} to="/add_product" variant="success">
         add product
       </Button>
       <table className="table table-striped mt-2">

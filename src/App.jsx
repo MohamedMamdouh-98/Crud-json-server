@@ -9,6 +9,7 @@ import Category from "./pages/Categorys";
 import Home from "./pages/Home";
 import './index.css'
 import ProductDetails from "./pages/ProductDetails";
+import AddProduct from "./pages/AddProduct";
 
 const App = () => {
   // useEffect(() => {
@@ -30,6 +31,7 @@ const App = () => {
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:productId" element={<ProductDetails />} />
                 <Route path="/categorys" element={<Category />} />
+                <Route path="/add_product" element={<AddProduct />} />
               </Routes>
           </Col>
         </Row>
