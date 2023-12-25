@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -6,10 +7,9 @@ const Products = () => {
   const [products, setProducts] = useState();
 
   const getAllProducts = () => {
-    fetch("http://localhost:5000/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
+    axios.get("http://localhost:5000/products")
+      .then((res) => {
+        setProducts(res.data);
       });
   };
   useEffect(() => {
@@ -20,19 +20,16 @@ const Products = () => {
     Swal.fire({
       title: `Do you want to clear this ${prduct.title}?`,
       showCancelButton: true,
-      icon: "question"
+      icon: "question",
     }).then((data) => {
       if (data?.isConfirmed) {
-        fetch(`http://localhost:5000/products/${prduct.id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
+        axios.delete(`http://localhost:5000/products/${prduct.id}`)
+          .then((res) => {
             getAllProducts();
             Swal.fire({
               title: "Deleted",
               text: "You clicked the button!",
-              icon: "success"
+              icon: "success",
             });
           });
       }
@@ -65,7 +62,13 @@ const Products = () => {
               <td>{el.price}</td>
               <td>{el.category}</td>
               <td>
-                <Button variant="warning">edit</Button>
+                <Button
+                  as={Link}
+                  to={`/edit_product/${el.id}`}
+                  variant="warning"
+                >
+                  edit
+                </Button>
               </td>
               <td>
                 <Button as={Link} to={`/products/${el.id}`} variant="primary">
