@@ -5,7 +5,6 @@ import AppBar from "./components/AppBar";
 import SideBar from "./components/SideBar";
 import { Route, Routes } from "react-router-dom";
 import Products from "./pages/Products";
-import Category from "./pages/Categorys";
 import Home from "./pages/Home";
 import './index.css'
 import ProductDetails from "./pages/ProductDetails";
