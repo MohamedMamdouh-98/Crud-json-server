@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import AppBar from "./components/AppBar";
 import SideBar from "./components/SideBar";
@@ -13,11 +12,6 @@ import AddProduct from "./pages/AddProduct";
 import EditProduct from "./pages/EditProduct";
 
 const App = () => {
-  // useEffect(() => {
-  //   axios.get("http://localhost:4000/products").then((res) => {
-  //     res.json();
-  //   });
-  // }, []);
   return (
     <>
       <AppBar />
