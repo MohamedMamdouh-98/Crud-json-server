@@ -5,7 +5,7 @@ const AppBar = () => {
   return (
     <Navbar  bg="dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand as={Link} to="/">C R U D</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/"><span style={{color:"green"}}>C</span> <span style={{color:"#0400F0"}}>R</span> <span style={{color:"#FFF40A"}}>U</span> <span style={{color:"red"}}>D</span></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
