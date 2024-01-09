@@ -26,9 +26,9 @@
     },
     {
       "title": "test",
-      "price": 5000,
+      "price": 50000,
       "category": "phone",
-      "id": 3
+      "id": 4
     }
   ]
 }
