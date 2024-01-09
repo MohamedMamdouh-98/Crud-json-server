@@ -65,7 +65,7 @@ const AddProduct = () => {
           value={price}
         />
       </Form.Group>
-      <Button type="submit">Send</Button>
+      <Button type="submit" disabled={title == "" && price == "" && category == ""}>Send</Button>
     </Form>
   );
 };

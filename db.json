@@ -23,6 +23,12 @@
         "rate": 4.1,
         "count": 259
       }
+    },
+    {
+      "title": "test",
+      "price": 5000,
+      "category": "phone",
+      "id": 3
     }
   ]
 }
