@@ -25,10 +25,10 @@
       }
     },
     {
-      "title": "test",
-      "price": 50000,
+      "title": "mido",
+      "price": 5000,
       "category": "phone",
-      "id": 4
+      "id": 3
     }
   ]
 }

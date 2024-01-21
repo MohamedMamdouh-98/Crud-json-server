@@ -19,7 +19,7 @@ const AddProduct = () => {
           price,
           category,
         })
-        .then((data) => {
+        .then(() => {
           Swal.fire({
             title: "Good job!",
             text: "You clicked the button!",
